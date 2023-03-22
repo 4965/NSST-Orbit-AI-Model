@@ -1,3 +1,8 @@
 1- matplotlib 
-  -The matplotlib library in Python is a powerful graphical tool used for creating charts, graphs, plots, and other visualizations. This library helps to create a visual representation of data and analyze it in an easy and efficient way. The matplotlib library contains many useful tools and functions for creating charts, such as line charts, pie charts, bar charts, 3D charts, and many more. YOU can use this command to dowenload it in Ubunto20.04
+  -The matplotlib library in Python is a powerful graphical tool.
+   it used for creating charts, graphs, plots, and other visualizations.
+   This library helps to create a visual representation of data and analyze it in an easy and efficient way.
+   The matplotlib library contains many useful tools and functions for creating charts,
+   such as line charts, pie charts, bar charts, 3D charts, and many more.
+   YOU can use this command to dowenload it in Ubunto20.04.
   - Ubuntu: sudo apt-get install python3-matplotlib

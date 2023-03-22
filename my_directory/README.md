@@ -1,1 +1,1 @@
--the file "my_library" : includes the names of libraries usedand thier commands
+-the file "my_library" : includes the names of libraries used and thier commands
