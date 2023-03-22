@@ -1,7 +1,0 @@
-from pyorbital.orbital import Orbital
-# define satellite parameters
-satellite_altitude = 400  # km
-satellite_inclination = 45  # degrees
-satellite_eccentricity = 0
-satellite_arg_perigee = 0
-
