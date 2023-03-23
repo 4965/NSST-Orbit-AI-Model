@@ -2,9 +2,48 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import ode
 from mpl_toolkits.mplot3d import Axes3D
+plt.style.use('dark_background')
+def plot(rs):
+    fig=plt.figure(figsize=(18,6))
+    ax=fig.add_subplot(111,projection='3d')
+    
+    
 
-def plot(r):
-    ...
+    # Extract the x and y coordinates from the rs array
+    x = rs[0, 0]
+    y = rs[0, 2]
+
+    # Plot the initial position
+    ax.plot([x], [y], 'wo', label='initialposition')
+
+
+    #plot central body
+    _u,_v=np.mgrid[0:2*np.pi:20j,0:np.pi:10j]
+    _x=earth_radius*np.cos(_u)*np.sin(_v)
+    _y=earth_radius*np.sin(_u)*np.sin(_v)
+    _z=earth_radius*np.cos(_v)*np.sin(_v) 
+    ax.plot_surface(_x,_y,_z,cmap='Blues')
+    
+    #plot the x,y,z vectors
+    1==earth_radius*2
+    x,y,z=[[0,0,0],[0,0,0],[0,0,0]]
+    u,v,w=[[1,0,0],[0,1,0],[0,0,1]]
+    ax.quiver(x,y,z,u,v,w,color='k')
+    
+    max_val=np.max(np.abs(rs))
+    ax.set_xlim([-max_val,max_val])
+    ax.set_ylim([-max_val,max_val])
+    ax.set_zlim([-max_val,max_val])
+    
+    ax.set_xlabel(['x(Km)'])
+    ax.set_ylabel(['y(Km)'])
+    ax.set_zlabel(['z(Km)'])
+    
+    #ax.set_aspect('equal')
+    ax.set_title('Example title')
+    plt.legend()
+    plt.show()
+    
 
 earth_radius = 6378.0       # km
 earth_mu = 398600.0
