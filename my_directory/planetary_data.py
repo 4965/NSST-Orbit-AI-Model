@@ -1,3 +1,11 @@
+G_metres=6.67408e-11
+G=G_metres*10**-9
+
+
+
+
+
+
 sun = {
     'name': 'sun',
     'mass': 1.989e30,
