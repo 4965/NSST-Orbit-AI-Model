@@ -20,10 +20,13 @@ class orbitpropagator:
         self.ys = np.zeros((self.n_steps, 6))
         self.ts = np.zeros((self.n_steps, 1))
 
-        # initial conditions
-        self.y0 = self.r0 + self. v0
-        self.ys[0] =self. np.array(y0)
-        self.step = 1
+        # initial variables
+        self.ts =np.zeros((self.n_steps,1))
+        self.ys =np.zeros((self.n_steps,6))
+        self.y0=self.r0+self.v0       #initial conditions
+        self.ts[0]=0
+        self.ys[0]=self.y0
+        self.step=1
 
         # initial solver
         self.solver = ode(self.diffy_q)
@@ -36,34 +39,37 @@ class orbitpropagator:
              self.solver.integrate(self.solver.t + self.dt)
              self.ts[self.step] = self.solver.t
              self.ys[self.step] = self.solver.y
-              self.step += 1
+             self.step += 1
 
         self.rs = self.ys[:, :3]
         self.vs = self.ys[:, 3:]
+        
     def diffy_q(self,t, y):
         # unpack state 
         rx, ry, rz, vx, vy, vz = y
         r = np.array([rx, ry, rz])
-
+        v = np.array ([rx, ry, rz])
+        
         # norm of the radius vector
         norm_r = np.linalg.norm(r)
 
         # two body acceleration
-        ax, ay, az = -r*self.self.cb['mu'] / norm_r**3
+        ax, ay, az = -r*self.cb['mu'] / norm_r**3
 
         return [vx, vy, vz, ax, ay, az]
+        
+        
     def plot_3d(self,show_plot=false,save_plot=false):
         fig=plt.figure(figsize=(16,8))
         ax=fig.add_subplot(111,projection='3d')
     
-    
+        
+        #plot trajectory
+        ax.plot(self.rs[:,0],self.rs[:,1],self.rs[:,2],'w',label='Trajectory')
+        ax.plot([self.rs[0,0]],[self.rs[0,1]],[self.rs[0,2]],'wo',label='initial position')
 
-        # Extract the x and y coordinates from the rs array
-        x = rs[0, 0]
-        y = rs[0, 2]
-
-        # Plot the initial position
-        ax.plot([x], [y], 'wo', label='initialposition')
+        
+        
 
 
         #plot central body
@@ -91,7 +97,12 @@ class orbitpropagator:
         #ax.set_aspect('equal')
         ax.set_title('Example title')
         plt.legend()
-        plt.show()
+        
+        if show_plot:
+            plt.show()
+        if save_plot:
+            plt.savefig(title+'.png',dpi=300)
+            
         
         
         
@@ -102,4 +113,4 @@ class orbitpropagator:
         
         
         
-    
+     
