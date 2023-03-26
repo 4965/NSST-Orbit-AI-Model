@@ -7,6 +7,7 @@ class orbitpropagator:
     def _init_(self,r0,v0,tspan,dt,cb=pd.earth):
         self.r0=r0
         self.v0=v0
+        self.y0=self.r0.tolist()+self.v0.tolist()
         self.tspan=tspan
         self.dt=dt
         self.cb=cb
